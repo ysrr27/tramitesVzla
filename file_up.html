@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!-- release v4.3.2, copyright 2014 - 2015 Kartik Visweswaran -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Upload file</title>
+        <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link href="file_up/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="file_up/js/fileinput.js" type="text/javascript"></script>
+        <script src="file_up/js/fileinput_locale_fr.js" type="text/javascript"></script>
+        <script src="file_up/js/locales/fes.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="jQuery-Smart-Wizard-master/styles/smart_wizard.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div id="wizard" class="swMain">
+                    <ul class="anchor">
+                        <li><a href="#step-1" id="step1" class="selected" isdone="1" rel="1">
+                            <span class="stepNumber">1</span>
+                            <span class="stepDesc">
+                                Recaudos<br>
+                                <small>Agregar los recaudos del tramite</small>
+                            </span>
+                        </a></li>
+                        <li><a href="#step-3" id="step2" class="disabled" isdone="0" rel="2">
+                            <span class="stepNumber">2</span>
+                            <span class="stepDesc">
+                                Datos de envió<br>
+                                <small>Agregar los datos para el envió</small>
+                            </span>
+                        </a></li>
+                        <li><a href="#step-4" id="step3" class="disabled" isdone="0" rel="3">
+                            <span class="stepNumber">3</span>
+                            <span class="stepDesc">
+                                Resumen<br>
+                                <small>Detalle de su tramite</small>
+                            </span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>                   
+            <div class="row">
+                <div id="step-1" class="container" style="display: block; left: 0px;">   
+                    <div class=" kv-main"> 
+
+                        <form enctype="multipart/form-data">
+                            <hr style="border: 2px dotted">
+                            <p><em>*Todos los recaudos son obligatorios</em></p>
+                            <input id="file-es" name="file-es[]" type="file" multiple>
+                        </form>
+                        <hr>
+                        <br>
+                    </div>
+                </div>
+                <div id="step-3" class="container" style="display: none;">
+                    <h2 class="StepTitle">Step 3: Contact Details</h2>  
+                    <table cellspacing="3" cellpadding="3" align="center">
+                        <tbody><tr>
+                            <td align="center" colspan="3">&nbsp;</td>
+                        </tr>        
+                        <tr>
+                            <td align="right">Email :</td>
+                            <td align="left">
+                                <input type="text" id="email" name="email" value="" class="txtBox">
+                            </td>
+                            <td align="left"><span id="msg_email"></span>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td align="right">Phone :</td>
+                            <td align="left">
+                                <input type="text" id="phone" name="phone" value="" class="txtBox">
+                            </td>
+                            <td align="left"><span id="msg_phone"></span>&nbsp;</td>
+                        </tr>                   
+                        <tr>
+                            <td align="right">Address :</td>
+                            <td align="left">
+                                <textarea name="address" id="address" class="txtBox" rows="3"></textarea>
+                            </td>
+                            <td align="left"><span id="msg_address"></span>&nbsp;</td>
+                        </tr>                                               
+                    </tbody></table>                                       
+                </div><div id="step-4" class="content" style="display: none;">
+                <h2 class="StepTitle">Step 4: Other Details</h2>    
+                <table cellspacing="3" cellpadding="3" align="center">
+                    <tbody>
+                        <tr>
+                            <td align="center" colspan="3">&nbsp;</td>
+                        </tr>        
+                        <tr>
+                            <td align="right">Hobbies :</td>
+                            <td align="left">
+                                <input type="text" id="phone" name="phone" value="" class="txtBox">
+                            </td>
+                            <td align="left"><span id="msg_phone"></span>&nbsp;</td>
+                        </tr>                   
+                        <tr>
+                            <td align="right">About You :</td>
+                            <td align="left">
+                                <textarea name="address" id="address" class="txtBox" rows="5"></textarea>
+                            </td>
+                            <td align="left"><span id="msg_address"></span>&nbsp;</td>
+                        </tr>                                               
+                    </tbody>
+                </table>                             
+            </div>
+        </div>
+        <div class="row swMain">
+            <div class="actionBar">
+                <div class="msgBox">
+                    <div class="content">
+
+                    </div>
+                    <a href="#" class="close">X</a>
+                </div>
+                <div class="loader">Loading</div>
+                <button type="button" class="buttonFinish buttonDisabled" >Finalizar</button>
+                <button type="button" class="buttonNext" >Continuar</button>
+                <button type="button" class="buttonPrevious buttonDisabled" >Atras</button>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    <script type="text/javascript">
+        $(document).ready(function(){  
+           var count = 0;
+           var countPrev = 0;     
+
+           $(".buttonNext").click(function(event) {
+            count += 1;
+            $(".buttonPrevious").attr('id', count);
+            var contentPanelId = jQuery(this).attr("id");
+            switch (true) {
+                case (count == 1):
+                $( "#step2" ).addClass( "selected" );
+                $("#step2").removeClass("disabled");
+                $(".buttonPrevious").removeAttr('disabled');
+                $(".buttonPrevious").removeClass("buttonDisabled");
+
+               
+
+                break;
+                case (count == 2):
+                $( "#step3" ).addClass( "selected" );
+                $("#step3").removeClass("disabled");
+                $( ".buttonNext" ).addClass( "buttonDisabled" );
+                $(".buttonNext").attr('disabled','disabled');
+                $("#step3").removeClass("disabled");
+                 $(".buttonFinish").removeClass("buttonDisabled");
+
+                break;
+                case (count == 3):
+                $( ".buttonNext" ).addClass( "buttonDisabled" );
+              //  $(".buttonNext").off('click');
+                break;
+                default:
+            }
+        });
+
+           $( ".buttonPrevious" ).click(function() {
+            count -= 1;
+            $(".buttonPrevious").attr('id', count);
+            var contentPanelId = jQuery(this).attr("id");
+            switch (true) {
+                case (contentPanelId == 0):
+                $( "#step2" ).addClass( "disabled" );
+                $("#step2").removeClass("selected");
+                $( ".buttonPrevious" ).addClass( "buttonDisabled" );
+                $(".buttonPrevious").attr('disabled','disabled');
+                break;
+                case (contentPanelId == 1):
+                $( "#step3" ).addClass( "disabled" );
+                $("#step3").removeClass("selected");
+                $( "#step2" ).addClass( "selected" );
+                $("#step2").removeClass("disabled");
+                 $(".buttonNext").removeClass("buttonDisabled");
+                 $(".buttonNext").removeAttr('disabled');
+
+                break;
+                default:
+            }
+        });
+        });
+    </script>
+	<script>
+    $('#file-fr').fileinput({
+        language: 'fr',
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png','gif'],
+    });
+    $('#file-es').fileinput({
+        language: 'es',
+        uploadUrl: '#',
+        allowedFileExtensions : ['pdf|', 'png','gif'],
+    });
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    $("#file-1").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
+    /*
+    $(".file").on('fileselect', function(event, n, l) {
+        alert('File Selected. Name: ' + l + ', Num: ' + n);
+    });
+    */
+	$("#file-3").fileinput({
+		showUpload: false,
+		showCaption: false,
+		browseClass: "btn btn-primary btn-lg",
+		fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+	});
+	$("#file-4").fileinput({
+		uploadExtraData: {kvId: '10'}
+	});
+    $(".btn-warning").on('click', function() {
+        if ($('#file-4').attr('disabled')) {
+            $('#file-4').fileinput('enable');
+        } else {
+            $('#file-4').fileinput('disable');
+        }
+    });    
+    $(".btn-info").on('click', function() {
+        $('#file-4').fileinput('refresh', {previewClass:'bg-info'});
+    });
+    /*
+    $('#file-4').on('fileselectnone', function() {
+        alert('Huh! You selected no files.');
+    });
+    $('#file-4').on('filebrowse', function() {
+        alert('File browse clicked for #file-4');
+    });
+    */
+    $(document).ready(function() {
+        $("#test-upload").fileinput({
+            'showPreview' : false,
+            'allowedFileExtensions' : ['jpg', 'png','gif'],
+            'elErrorContainer': '#errorBlock'
+        });
+        /*
+        $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
+            alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
+        });
+        */
+    });
+	</script>
+</html>
