@@ -199,6 +199,7 @@ border-color: #fff !important;
 .cont-carrousel{
   min-height: 585px;
 }
+
 .btn-rg{
   -webkit-transition: all 0.2s ease-in-out 0s;
     -o-transition: all 0.2s ease-in-out 0s;
@@ -210,6 +211,22 @@ border-color: #fff !important;
     text-decoration: none;
     word-spacing: 1px;
     padding: 16px 27px;
+}
+.btn-default-service{
+  border-color: darkblue !important;
+}
+.btn-default-service:active {
+  background-color: darkblue !important;
+}
+
+.btn-default-service:hover {
+  background-color: darkblue;
+  border-color: #000 !important;
+}
+.btn-rg:active {
+  color: #fff;
+  background-color: darkblue !important;
+  border-color: #000 !important;
 }
 .btn-log{
   margin-right: 4px;
@@ -1667,6 +1684,7 @@ ul, ol {
       color: #c3c3c3;
       top: 125px;
       left: -485px;
+      z-index: 111;
     }
     #contact-busClick.active p {
       color: #c3c3c3;
@@ -1679,6 +1697,7 @@ ul, ol {
       color: #c3c3c3;
       top: 125px;
       left: -90px;
+      z-index: 111;
     }
     #contact-carClick.active p {
       color: #c3c3c3;
@@ -1798,7 +1817,7 @@ ul, ol {
     -webkit-transition: color 0.25s ease-in-out;
     transition: color 0.25s ease-in-out;
     font-family: "Roboto Condensed", Helvetica, sans-serif;
-    text-transform: uppercase;
+    /**text-transform: uppercase;*/
     text-decoration: none;
     color: #dff3fd;
   }
@@ -2670,7 +2689,7 @@ article h2 {
   }
 }
 .mbr-section {
-  padding: 0 20px;
+  padding: 0;
 }
 .mbr-section--no-padding {
   padding: 0;
