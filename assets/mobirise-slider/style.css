@@ -50,13 +50,16 @@
     }
 }
 
+.carousel-indicators {
+    bottom: -20px !important;
+}
 /* boxed model */
 .mbr-slider > .boxed-slider {
     position: relative;
     padding: 93px 0;
 }
 .mbr-slider > .container .carousel-indicators {
-    margin-bottom: 93px;
+    margin-bottom: -36px !important;
 }
 @media (max-width: 767px) {
     .mbr-slider > .container .carousel-control {
@@ -68,6 +71,7 @@
     height: 300px;
     border-radius: 50%;
     margin-left: 28px;
+    border: 2px solid #ccc;
 
 }
 .mbr-slider > .container img + .row {

@@ -303,3 +303,21 @@
   color: #EA8511;
   border: 1px solid #EA8511;  
 }
+
+@media (max-width: 400px) {
+  .swMain{
+    margin-left: 12px; 
+  }
+  .actionBar{
+    height: auto !important;
+  }
+  .swMain .buttonFinish {
+    width: 98%;
+    height: 45px;
+    margin-right: 3px;
+  }
+  .swMain .buttonNext, .swMain .buttonPrevious{
+    width: 98%;
+    height: 45px;
+  }
+}
